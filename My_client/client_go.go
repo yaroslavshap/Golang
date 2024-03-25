@@ -24,19 +24,19 @@ func main() {
 		return
 	}
 
-	// Загрузите свой самоподписанный сертификат
+	// Загрузка самоподписанного сертификата
 	cert, err := os.ReadFile("/Users/aroslavsapoval/Desktop/Golang/My_server/server.cert")
 	if err != nil {
 		log.Fatalf("Couldn't load self-signed certificate: %s", err)
 	}
 
-	// Добавьте его в пул доверенных сертификатов
+	// Добавить его в пул доверенных сертификатов
 	certPool := x509.NewCertPool()
 	if ok := certPool.AppendCertsFromPEM(cert); !ok {
 		log.Fatalf("Couldn't append self-signed certificate to CertPool")
 	}
 
-	// Создайте новый http.Client с конфигурацией TLS, которая доверяет вашему самоподписанному сертификату
+	// Создайть новый http.Client с конфигурацией TLS, которая доверяет самоподписанному сертификату
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{
 			RootCAs:            certPool,
@@ -44,12 +44,10 @@ func main() {
 		},
 	}
 
-	// Явно включите HTTP/2.
+	// Явно включить HTTP/2.
 	http2.ConfigureTransport(tr)
 
 	client := &http.Client{Transport: tr}
-
-	// Остальной код...
 
 	totalTime := 0.0
 	for _, file := range files {
@@ -89,7 +87,7 @@ func main() {
 		transferTime := endTime.Sub(startTime).Seconds()
 		totalTime += transferTime
 
-		fmt.Printf("Response from server: %s, HTTP version: %s, %f секунд\n", resp.Status, resp.Proto, transferTime)
+		fmt.Printf("Ответ от сервера: %s, HTTP version: %s, %f секунд\n", resp.Status, resp.Proto, transferTime)
 	}
 
 	fmt.Printf("Общее время - %f\n", totalTime)

@@ -7,7 +7,7 @@ import (
 
 func main() {
 	http.HandleFunc("/receive_images/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Printf("Protocols supported by the server: %v\n", r.Proto)
+		fmt.Printf("Протокол поддерживается сервером: %v\n", r.Proto)
 
 		file, header, err := r.FormFile("file")
 		if err != nil {
