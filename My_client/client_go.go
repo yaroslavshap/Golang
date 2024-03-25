@@ -82,6 +82,7 @@ func main() {
 			fmt.Println("Ошибка при отправке запроса:", err)
 			return
 		}
+
 		resp.Body.Close()
 		endTime := time.Now()
 

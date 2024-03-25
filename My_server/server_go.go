@@ -36,6 +36,7 @@ func main() {
 		// }
 
 		fmt.Fprintf(w, "Изображение %s успешно принято.", header.Filename)
+
 		fmt.Printf("Изображение %s успешно принято.\n", header.Filename)
 		fmt.Printf("Файл %s успешно сохранен.\n", header.Filename)
 	})

@@ -1,4 +1,5 @@
 --||-- Golang --||--
+сгенерировал сертификаты для Go - openssl req -x509 -nodes -newkey rsa:4096 -keyout server.key -out server.cert -days 365 -subj "/CN=127.0.0.1" -addext "subjectAltName = IP:127.0.0.1"
 создал .mod файл,потому что по другому не импортировалась утилита http2 ->(go mod golang.org/x/net/http2)
 запускаем -> (go run server_go.go), потом (go run client_go.go)
 Данные - /Users/aroslavsapoval/myProjects/data/images  -> 1980 х 1080 - 201 шт. - 1,29 ГБ, 
